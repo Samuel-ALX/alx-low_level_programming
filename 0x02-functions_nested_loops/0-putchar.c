@@ -1,7 +1,13 @@
-#include <stdio.h>
+#include <stdio.hi>
 #include "main.h"
 
-int main()
+/**
+ * main - This scripts pring putchar
+ *
+ * Return: Always 0 (Success)
+ */
+
+int main(void)
 {
 	char x[] = "_putchar";
 	int i;
@@ -10,5 +16,6 @@ int main()
 		_putchar(x[i]);
 
 	_putchar('\n');
-	return 0;
+
+	return (0);
 }
