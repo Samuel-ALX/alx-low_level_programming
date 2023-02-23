@@ -1,4 +1,4 @@
-#include "main"
+#include "main.h"
 
 /**
  * print_line - function that draws a straight line in the terminal.
@@ -12,7 +12,7 @@ void print_line(int n)
 {
 	int j;
 
-	for (j = 0; j < n; i++)
+	for (j = 0; j < n; j++)
 	{
 		_putchar('_');
 	}
