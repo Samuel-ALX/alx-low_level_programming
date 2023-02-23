@@ -9,7 +9,7 @@
 
 void print_most_numbers(void)
 {
-	char c:
+	char c;
 
 		for (c = '0'; c <= '9'; c++)
 		{
@@ -17,5 +17,5 @@ void print_most_numbers(void)
 
 				_putchar(c);
 		}
-	_putchar('\n)
+	_putchar('\n);
 }
