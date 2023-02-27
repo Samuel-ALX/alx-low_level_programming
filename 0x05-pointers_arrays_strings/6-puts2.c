@@ -1,18 +1,24 @@
 #include "main.h"
 
 /**
- * puts2 - Prints one char out of two of a string.
- * @str: The string containing characters.
+ * print_rev - a function that prints a string, in reverse
+ * fcounter is to first count to end, n is to count back
+ * @s: str input
+ * Return: string in reverse
  */
-void puts2(char *str)
+void print_rev(char *s)
 {
-	int i, len = 0;
+	int fcounter = 0;
+	int i, n;
 
-	while (str[i++])
-		len++;
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		fcounter++;
+	}
 
-	for (i = 0; i < len; i += 2)
-		_putchar(str[i]);
-
+	for (n = (fcounter - 1); n >= 0; n--)
+	{
+		_putchar(s[n]);
+	}
 	_putchar('\n');
 }
