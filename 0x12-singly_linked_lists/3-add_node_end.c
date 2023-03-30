@@ -1,61 +1,49 @@
 #include "lists.h"
-/**
- * _strlen - determines the string length
- * @str: given string
- *
- * Return: an integer length
- */
-int _strlen(const char *str)
-{
-	int length = 0;
-
-	while (str)
-		length++;
-	return (length);
-}
+#include <string.h>
 
 /**
- * add_node_end - add a node at the end of list
- * @head: the head of the list
- * @str: a given string
+ * add_node_end - Adds a new node at the end
+ *                of a list_t list.
+ * @head: A pointer the head of the list_t list.
+ * @str: The string to be added to the list_t list.
  *
- * Return: a pointer to the new element
+ * Return: If the function fails - NULL.
+ *         Otherwise - the address of the new element.
  */
 list_t *add_node_end(list_t **head, const char *str)
 {
-	list_t *new_node;
-	list_t *tmp;
-	tmp = *head;
+	char *dup;
+	int len;
+	list_t *new, *last;
 
-	if (!str)
+	new = malloc(sizeof(list_t));
+	if (new == NULL)
 		return (NULL);
 
-	/* nod memeorty allocation */
-	new_node = malloc(sizeof(list_t));
-
-	if (new_node == NULL)
-		return (NULL);
-	/* Nod creation and initialization */
-	new_node->next = NULL;
-	new_node->str = strdup(str);
-	/* check memory allocation for strdup */
-	if (new_node->str == NULL)
+	dup = strdup(str);
+	if (str == NULL)
 	{
-		free(new_node);
+		free(new);
 		return (NULL);
 	}
-	new_node->len = _strlen(str);
-	/* checking if there is more than 2 elements(list exist) */
+
+	for (len = 0; str[len];)
+		len++;
+
+	new->str = dup;
+	new->len = len;
+	new->next = NULL;
+
 	if (*head == NULL)
+		*head = new;
+
+	else
 	{
-		*head = new_node;
-		return (new_node);
+		last = *head;
+		while (last->next != NULL)
+			last = last->next;
+		last->next = new;
 	}
-	/* searcing for n-1 last element of the list where to point */
-	while (tmp->next)
-	{
-		tmp = tmp->next;
-	tmp->next = new_node;
-	}
-	return (new_node);
-}
+
+	return (*head);
+}}
